@@ -1,1 +1,2 @@
-
+Generate a Flutter login screen (email + password) using supabase_flutter auth.
+Handle errors with SnackBar and navigate to HomePage on success.
