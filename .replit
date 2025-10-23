@@ -4,3 +4,40 @@ expertMode = true
 [nix]
 channel = "stable-25_05"
 packages = ["flutter", "chromium"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Flutter App"
+
+[[workflows.workflow]]
+name = "Flutter App"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "flutter run -d web-server --web-hostname=0.0.0.0 --web-port=5000 --dart-define=SUPABASE_URL=$SUPABASE_URL --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 34051
+externalPort = 3000
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["flutter", "run", "-d", "web-server", "--web-hostname=0.0.0.0", "--web-port=5000", "--release", "--dart-define=SUPABASE_URL=$SUPABASE_URL", "--dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY"]
+build = ["flutter", "build", "web", "--dart-define=SUPABASE_URL=$SUPABASE_URL", "--dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY"]

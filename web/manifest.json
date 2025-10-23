@@ -1,0 +1,11 @@
+{
+    "name": "AI Mobile App",
+    "short_name": "AI Mobile",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "AI mobile app with Supabase authentication",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}
