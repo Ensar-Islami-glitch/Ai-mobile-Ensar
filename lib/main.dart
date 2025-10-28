@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'login_page.dart';
+import 'pages/task_page.dart';
 
 
 void main() async {
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const LoginPage(),
+      routes: {
+        '/tasks': (_) => const TaskPage(),
+      },
     );
   }
 }

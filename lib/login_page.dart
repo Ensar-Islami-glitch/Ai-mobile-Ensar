@@ -39,9 +39,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       if (mounted) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePage()),
-        );
+        Navigator.of(context).pushReplacementNamed('/tasks');
       }
     } on AuthException catch (e) {
       if (mounted) {
